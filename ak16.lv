@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">🚧 Site Under Construction 🚧</h1>
+        <p class="subtitle">Something special is coming soon...</p>
+        <div class="loader">
+            <span></span><span></span><span></span>
+        </div>
+        <p class="footer">Stay tuned — we're working hard behind the scenes.</p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: #fff;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    padding: 40px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, #00c6ff, #0072ff, #00c6ff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s linear infinite;
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    color: #cfcfcf;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+}
+
+.loader {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+.loader span {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #00c6ff;
+    animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.loader span:nth-child(1) { animation-delay: -0.32s; }
+.loader span:nth-child(2) { animation-delay: -0.16s; }
+
+.footer {
+    font-size: 0.95rem;
+    color: #888;
+    font-style: italic;
+}
+
+@keyframes bounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+}
+
+@keyframes shine {
+    to { background-position: 200% center; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+    .title { font-size: 1.6rem; }
+    .subtitle { font-size: 1rem; }
+}
+
+// Небольшой динамический эффект — меняющиеся точки в заголовке
+const title = document.querySelector('.title');
+const baseText = '🚧 Site Under Construction 🚧';
+let dots = 0;
+
+setInterval(() => {
+    dots = (dots + 1) % 4;
+    document.title = 'Coming Soon' + '.'.repeat(dots);
+}, 500);
